@@ -1,4 +1,8 @@
-def radiation_length(Z, A):
+from . import units as _units
+from numbers import Number
+
+
+def radiation_length(Z : Number, A : Number) -> _units.Quantity:
     """Radiation length (a.k.a. X_0)
 
     The distance over which electrons lose 1/e of their energy.
@@ -11,4 +15,4 @@ def radiation_length(Z, A):
     """
 
     import numpy as np
-    return 1432.8 * A / (Z * (Z + 1) * (11.319 - np.log(Z)))
+    return 1432.8 * A / (Z * (Z + 1) * (11.319 - np.log(Z))) * _units["g/cm^(-2)"]

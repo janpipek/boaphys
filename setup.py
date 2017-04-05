@@ -13,7 +13,7 @@ options = dict(
     author='Jan Pipek',
     author_email='jan.pipek@gmail.com',
     url='https://github.com/janpipek/boaphys',
-    install_requires = ['numpy'],
+    install_requires = ['numpy', 'pint'],
     #extras_require = {
     #    'all' : ['dask', 'matplotlib', 'bokeh']
     #},
