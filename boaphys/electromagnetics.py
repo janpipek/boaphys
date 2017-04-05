@@ -1,16 +1,16 @@
-from . import units as _units
+from . import units
 
 
 class MagneticField:
     @staticmethod
-    def dipole_bending_field(particle, r : _units.Quantity, relativistic=True) -> _units.Quantity:
+    def dipole_bending_field(particle, r : units.Quantity, relativistic=True) -> units.Quantity:
         mass = particle.total_mass if relativistic else particle.rest_mass
-        return mass * particle.velocity / (particle.charge * r)
+        return (mass * particle.velocity / (particle.charge * r)).to("tesla")
     
     @staticmethod
-    def dipole_bending_radius(particle, B : _units.Quantity, relativistic=True) -> _units.Quantity:
+    def dipole_bending_radius(particle, B : units.Quantity, relativistic=True) -> units.Quantity:
         mass = particle.total_mass if relativistic else particle.rest_mass
-        return mass * particle.velocity / (particle.charge * B)
+        return (mass * particle.velocity / (particle.charge * B)).to("m")
         
 
 __all__ = ["MagneticField"]

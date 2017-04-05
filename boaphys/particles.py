@@ -1,8 +1,8 @@
-from . import units as _units
+from . import units, constants
 
 
-_MeVc2 = _units.MeV / _units.c ** 2
-_e = _units.e
+_MeVc2 = units.MeV / constants.c ** 2
+_e = constants.si.e
 
 
 class Particle:
@@ -15,18 +15,18 @@ class Particle:
         self.properties.update(kwargs)
         
     @property
-    def rest_mass(self) -> _units.Quantity:
+    def rest_mass(self) -> units.Quantity:
         return self.properties["rest_mass"]
         
     @property
-    def rest_energy(self) -> _units.Quantity:
-        return self.rest_mass * _units.c ** 2
+    def rest_energy(self) -> units.Quantity:
+        return self.rest_mass * constants.c ** 2
         
     def __call__(self, *args, **kwargs) -> "DynamicParticle":
         return DynamicParticle(self, *args, **kwargs)
     
     @property
-    def charge(self) -> _units.Quantity:
+    def charge(self) -> units.Quantity:
         return self.properties["charge"]
                 
         
@@ -39,12 +39,12 @@ class DynamicParticle:
         return getattr(self.particle, name)
         
     @property
-    def total_energy(self) -> _units.Quantity:
+    def total_energy(self) -> units.Quantity:
         return self.particle.rest_energy + self.kinetic_energy
         
     @property
-    def total_mass(self) -> _units.Quantity:
-        return self.total_energy / _units.c ** 2
+    def total_mass(self) -> units.Quantity:
+        return self.total_energy / constants.c ** 2
         
     @property
     def gamma(self) -> float:
@@ -56,8 +56,8 @@ class DynamicParticle:
         return float(np.sqrt(1 - 1 / self.gamma ** 2))
         
     @property
-    def velocity(self) -> _units.Quantity:
-        return self.beta * _units.c        
+    def velocity(self) -> units.Quantity:
+        return self.beta * constants.c        
         
         
 Proton = Particle("proton",

@@ -1,17 +1,11 @@
-from . import units as _units
+from . import units, constants
 from .particles import DynamicParticle
 from multipledispatch import dispatch
 
-# Some units
-c = _units.c
-keV = _units["keV"]
-MeV = _units["MeV"]
-GeV = _units["GeV"]
 
-
-@dispatch(_units.Quantity)        
-def beta(value : _units.Quantity) -> float:
-    return float(value / _units.c)
+@dispatch(units.Quantity)        
+def beta(value : units.Quantity) -> float:
+    return float(value / constants.c)
 
 
 @dispatch(DynamicParticle)

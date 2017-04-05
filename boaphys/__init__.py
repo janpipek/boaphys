@@ -1,4 +1,4 @@
-from .units_impl import units
+from .units_impl import units, constants
 
 from . import particles
 from . import electromagnetics
