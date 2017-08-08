@@ -6,3 +6,4 @@ from . import radiation
 from . import relativity
 from . import elements
 from . import astronomy
+from . import materials
